@@ -7,15 +7,11 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Plus, Minus, RotateCcw, Play } from "lucide-react"
 
-interface ArrayVisualizationProps {
-  onComplete: (earnedXP: number, earnedCoins: number) => void
-}
-
-export function ArrayVisualization({ onComplete }: ArrayVisualizationProps) {
-  const [array, setArray] = useState<number[]>([1, 3, 5, 7, 9])
+export function ArrayVisualization({ onComplete }) {
+  const [array, setArray] = useState([1, 3, 5, 7, 9])
   const [inputValue, setInputValue] = useState("")
   const [insertIndex, setInsertIndex] = useState("")
-  const [animatingIndex, setAnimatingIndex] = useState<number | null>(null)
+  const [animatingIndex, setAnimatingIndex] = useState(null)
   const [operations, setOperations] = useState(0)
 
   const handleInsert = () => {
@@ -38,7 +34,7 @@ export function ArrayVisualization({ onComplete }: ArrayVisualizationProps) {
     }, 300)
   }
 
-  const handleDelete = (index: number) => {
+  const handleDelete = (index) => {
     setAnimatingIndex(index)
     setTimeout(() => {
       const newArray = array.filter((_, i) => i !== index)

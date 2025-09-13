@@ -2,18 +2,8 @@
 
 import { useEffect, useRef } from "react"
 
-interface Particle {
-  x: number
-  y: number
-  vx: number
-  vy: number
-  size: number
-  opacity: number
-  color: string
-}
-
 export function FloatingParticles() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const canvasRef = useRef(null)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -22,7 +12,7 @@ export function FloatingParticles() {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    const particles: Particle[] = []
+    const particles = []
     const particleCount = 50
 
     const resizeCanvas = () => {
@@ -30,7 +20,7 @@ export function FloatingParticles() {
       canvas.height = window.innerHeight
     }
 
-    const createParticle = (): Particle => ({
+    const createParticle = () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       vx: (Math.random() - 0.5) * 0.5,

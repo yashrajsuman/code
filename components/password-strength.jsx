@@ -2,12 +2,8 @@
 
 import { Progress } from "@/components/ui/progress"
 
-interface PasswordStrengthProps {
-  password: string
-}
-
-export function PasswordStrength({ password }: PasswordStrengthProps) {
-  const getStrength = (password: string) => {
+export function PasswordStrength({ password }) {
+  const getStrength = (password) => {
     let strength = 0
     if (password.length >= 8) strength += 25
     if (/[A-Z]/.test(password)) strength += 25
@@ -16,7 +12,7 @@ export function PasswordStrength({ password }: PasswordStrengthProps) {
     return strength
   }
 
-  const getStrengthText = (strength: number) => {
+  const getStrengthText = (strength) => {
     if (strength === 0) return { text: "", color: "" }
     if (strength <= 25) return { text: "Weak", color: "text-destructive" }
     if (strength <= 50) return { text: "Fair", color: "text-yellow-500" }

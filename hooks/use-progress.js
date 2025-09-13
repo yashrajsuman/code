@@ -2,13 +2,12 @@
 
 import { useState, useEffect } from "react"
 import { dataManager } from "@/lib/data-manager"
-import type { UserProgress, LearningSession } from "@/lib/types"
 import { useAuth } from "./use-auth"
 
 export function useProgress() {
   const { user } = useAuth()
-  const [progress, setProgress] = useState<UserProgress[]>([])
-  const [currentSession, setCurrentSession] = useState<LearningSession | null>(null)
+  const [progress, setProgress] = useState([])
+  const [currentSession, setCurrentSession] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
@@ -31,12 +30,12 @@ export function useProgress() {
     }
   }
 
-  const updateTopicProgress = (subjectId: string, topicId: string, progressData: Partial<UserProgress>): void => {
+  const updateTopicProgress = (subjectId, topicId, progressData) => {
     if (!user) return
 
     const existingProgress = dataManager.getTopicProgress(user.id, subjectId, topicId)
 
-    const updatedProgress: UserProgress = {
+    const updatedProgress = {
       userId: user.id,
       subjectId,
       topicId,
@@ -54,18 +53,12 @@ export function useProgress() {
     loadProgress()
   }
 
-  const completeTopicProgress = (
-    subjectId: string,
-    topicId: string,
-    score: number,
-    xpEarned: number,
-    coinsEarned: number,
-  ): void => {
+  const completeTopicProgress = (subjectId, topicId, score, xpEarned, coinsEarned) => {
     if (!user) return
 
     const existingProgress = dataManager.getTopicProgress(user.id, subjectId, topicId)
 
-    const updatedProgress: UserProgress = {
+    const updatedProgress = {
       userId: user.id,
       subjectId,
       topicId,
@@ -89,7 +82,7 @@ export function useProgress() {
     loadProgress()
   }
 
-  const startLearningSession = (topicId: string): LearningSession => {
+  const startLearningSession = (topicId) => {
     if (!user) throw new Error("User not authenticated")
 
     const session = dataManager.startLearningSession(user.id, topicId)
@@ -97,11 +90,11 @@ export function useProgress() {
     return session
   }
 
-  const getTopicProgress = (subjectId: string, topicId: string): UserProgress | null => {
+  const getTopicProgress = (subjectId, topicId) => {
     return progress.find((p) => p.subjectId === subjectId && p.topicId === topicId) || null
   }
 
-  const getSubjectProgress = (subjectId: string) => {
+  const getSubjectProgress = (subjectId) => {
     const subjectProgress = progress.filter((p) => p.subjectId === subjectId)
     const completedTopics = subjectProgress.filter((p) => p.status === "completed").length
     const totalTopics = subjectProgress.length

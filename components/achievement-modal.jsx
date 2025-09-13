@@ -5,17 +5,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { AnimatedCounter } from "@/components/animated-counter"
-import type { Achievement } from "@/lib/types"
 import { Trophy, Star, Coins, Sparkles, PartyPopper } from "lucide-react"
 import { useEffect, useState } from "react"
 
-interface AchievementModalProps {
-  achievements: Achievement[]
-  isOpen: boolean
-  onClose: () => void
-}
-
-export function AchievementModal({ achievements, isOpen, onClose }: AchievementModalProps) {
+export function AchievementModal({ achievements, isOpen, onClose }) {
   const [showConfetti, setShowConfetti] = useState(false)
 
   useEffect(() => {
