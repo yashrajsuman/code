@@ -1,26 +1,11 @@
 "use client"
 
-import type React from "react"
-
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { PlayCircle, Trophy, Clock, Lock, Sparkles } from "lucide-react"
-
-interface SubjectCardProps {
-  id: string
-  title: string
-  description: string
-  icon: React.ReactNode
-  progress: number
-  totalTopics: number
-  completedTopics: number
-  difficulty: "Beginner" | "Intermediate" | "Advanced"
-  estimatedTime: string
-  isLocked?: boolean
-}
 
 export function SubjectCard({
   id,
@@ -33,8 +18,8 @@ export function SubjectCard({
   difficulty,
   estimatedTime,
   isLocked = false,
-}: SubjectCardProps) {
-  const getDifficultyColor = (difficulty: string) => {
+}) {
+  const getDifficultyColor = (difficulty) => {
     switch (difficulty) {
       case "Beginner":
         return "bg-green-500/10 text-green-500 border-green-500/20"

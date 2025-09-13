@@ -2,14 +2,7 @@
 
 import { useEffect, useState } from "react"
 
-interface ProgressRingProps {
-  progress: number
-  size?: number
-  strokeWidth?: number
-  className?: string
-}
-
-export function ProgressRing({ progress, size = 120, strokeWidth = 8, className = "" }: ProgressRingProps) {
+export function ProgressRing({ progress, size = 120, strokeWidth = 8, className = "" }) {
   const [animatedProgress, setAnimatedProgress] = useState(0)
   const radius = (size - strokeWidth) / 2
   const circumference = radius * 2 * Math.PI

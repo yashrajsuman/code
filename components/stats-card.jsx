@@ -1,22 +1,9 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import type { LucideIcon } from "lucide-react"
 import { TrendingUp, TrendingDown } from "lucide-react"
-import type { ReactNode } from "react"
 
-interface StatsCardProps {
-  title: string
-  value: string | number | ReactNode
-  description?: string
-  icon: LucideIcon
-  trend?: {
-    value: number
-    isPositive: boolean
-  }
-}
-
-export function StatsCard({ title, value, description, icon: Icon, trend }: StatsCardProps) {
+export function StatsCard({ title, value, description, icon: Icon, trend }) {
   return (
     <Card className="hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/30 group relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
