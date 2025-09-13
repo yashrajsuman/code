@@ -1,6 +1,4 @@
 "use client"
-
-import type React from "react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
@@ -21,7 +19,7 @@ function LoginContent() {
   const { login } = useAuth()
   const router = useRouter()
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
     setIsSubmitting(true)
@@ -53,9 +51,7 @@ function LoginContent() {
               <BookOpen className="h-8 w-8 text-primary animate-float" />
               <Zap className="h-4 w-4 text-accent absolute -top-1 -right-1 animate-pulse-glow" />
             </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              CodeQuest
-            </h1>
+            <h1 className="text-2xl font-bold text-primary">CodeQuest</h1>
           </div>
           <div className="space-y-2">
             <h2 className="text-3xl font-bold">Welcome back</h2>
