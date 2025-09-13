@@ -7,24 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { CheckCircle, XCircle, HelpCircle, ArrowRight } from "lucide-react"
 
-interface QuizQuestion {
-  id: string
-  question: string
-  type: "yes-no" | "multiple-choice"
-  options?: string[]
-  correctAnswer: string | number
-  explanation: string
-}
-
-interface QuizPanelProps {
-  questions: QuizQuestion[]
-  onComplete: (score: number, earnedXP: number, earnedCoins: number) => void
-  title?: string
-}
-
-export function QuizPanel({ questions, onComplete, title = "Knowledge Check" }: QuizPanelProps) {
+export function QuizPanel({ questions, onComplete, title = "Knowledge Check" }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [answers, setAnswers] = useState<(string | number | null)[]>(new Array(questions.length).fill(null))
+  const [answers, setAnswers] = useState(new Array(questions.length).fill(null))
   const [showExplanation, setShowExplanation] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
   const [score, setScore] = useState(0)
@@ -32,7 +17,7 @@ export function QuizPanel({ questions, onComplete, title = "Knowledge Check" }: 
   const currentQuestion = questions[currentQuestionIndex]
   const progress = ((currentQuestionIndex + 1) / questions.length) * 100
 
-  const handleAnswer = (answer: string | number) => {
+  const handleAnswer = (answer) => {
     const newAnswers = [...answers]
     newAnswers[currentQuestionIndex] = answer
     setAnswers(newAnswers)

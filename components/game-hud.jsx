@@ -7,14 +7,7 @@ import { useAuth } from "@/hooks/use-auth"
 import { AnimatedCounter } from "@/components/animated-counter"
 import { Coins, Zap, Trophy, Target, Sparkles } from "lucide-react"
 
-interface GameHUDProps {
-  currentXP?: number
-  currentCoins?: number
-  sessionProgress?: number
-  topicTitle?: string
-}
-
-export function GameHUD({ currentXP = 0, currentCoins = 0, sessionProgress = 0, topicTitle }: GameHUDProps) {
+export function GameHUD({ currentXP = 0, currentCoins = 0, sessionProgress = 0, topicTitle }) {
   const { user } = useAuth()
 
   if (!user) return null
