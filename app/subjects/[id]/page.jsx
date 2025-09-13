@@ -28,7 +28,7 @@ const subjectData = {
         title: "Arrays",
         description: "Learn about static and dynamic arrays, indexing, and basic operations",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Easy" as const,
+        difficulty: "Easy",
         estimatedTime: "30 min",
         xpReward: 100,
         coinReward: 50,
@@ -41,7 +41,7 @@ const subjectData = {
         title: "Linked Lists",
         description: "Understand singly and doubly linked lists, insertion, and deletion",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Medium" as const,
+        difficulty: "Medium",
         estimatedTime: "45 min",
         xpReward: 150,
         coinReward: 75,
@@ -54,7 +54,7 @@ const subjectData = {
         title: "Stacks",
         description: "Master LIFO data structure with push, pop, and peek operations",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Easy" as const,
+        difficulty: "Easy",
         estimatedTime: "25 min",
         xpReward: 100,
         coinReward: 50,
@@ -67,7 +67,7 @@ const subjectData = {
         title: "Queues",
         description: "Learn FIFO data structure and its various implementations",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Easy" as const,
+        difficulty: "Easy",
         estimatedTime: "25 min",
         xpReward: 100,
         coinReward: 50,
@@ -80,7 +80,7 @@ const subjectData = {
         title: "Binary Trees",
         description: "Explore tree structures, traversals, and binary search trees",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Hard" as const,
+        difficulty: "Hard",
         estimatedTime: "60 min",
         xpReward: 200,
         coinReward: 100,
@@ -93,7 +93,7 @@ const subjectData = {
         title: "Graphs",
         description: "Understand graph representations, traversals, and algorithms",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Hard" as const,
+        difficulty: "Hard",
         estimatedTime: "75 min",
         xpReward: 250,
         coinReward: 125,
@@ -117,7 +117,7 @@ const subjectData = {
         title: "OSI Model",
         description: "Understand the 7-layer network model and its functions",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Easy" as const,
+        difficulty: "Easy",
         estimatedTime: "40 min",
         xpReward: 120,
         coinReward: 60,
@@ -130,7 +130,7 @@ const subjectData = {
         title: "TCP/IP Protocol",
         description: "Learn about the internet protocol suite and packet transmission",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Medium" as const,
+        difficulty: "Medium",
         estimatedTime: "50 min",
         xpReward: 150,
         coinReward: 75,
@@ -143,7 +143,7 @@ const subjectData = {
         title: "Routing Algorithms",
         description: "Explore how data finds its path across networks",
         icon: <Target className="h-5 w-5" />,
-        difficulty: "Hard" as const,
+        difficulty: "Hard",
         estimatedTime: "60 min",
         xpReward: 200,
         coinReward: 100,
@@ -157,8 +157,8 @@ const subjectData = {
 
 function SubjectDetailContent() {
   const params = useParams()
-  const subjectId = params.id as string
-  const subject = subjectData[subjectId as keyof typeof subjectData]
+  const subjectId = params.id
+  const subject = subjectData[subjectId]
 
   if (!subject) {
     return (

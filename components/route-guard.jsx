@@ -1,18 +1,10 @@
 "use client"
-
-import type React from "react"
 import { useEffect, useState } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { useAuth } from "@/hooks/use-auth"
 import { Loader2, BookOpen, Zap } from "lucide-react"
 
-interface RouteGuardProps {
-  children: React.ReactNode
-  requireAuth?: boolean
-  redirectTo?: string
-}
-
-export function RouteGuard({ children, requireAuth = false, redirectTo }: RouteGuardProps) {
+export function RouteGuard({ children, requireAuth = false, redirectTo }) {
   const { user, isLoading } = useAuth()
   const router = useRouter()
   const pathname = usePathname()

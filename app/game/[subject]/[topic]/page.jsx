@@ -26,7 +26,7 @@ const topicData = {
         {
           id: "1",
           question: "Are arrays stored in contiguous memory locations?",
-          type: "yes-no" as const,
+          type: "yes-no",
           correctAnswer: "yes",
           explanation:
             "Yes, arrays store elements in contiguous memory locations, which allows for efficient random access using indices.",
@@ -34,7 +34,7 @@ const topicData = {
         {
           id: "2",
           question: "What is the time complexity of accessing an element in an array by index?",
-          type: "multiple-choice" as const,
+          type: "multiple-choice",
           options: ["O(1)", "O(n)", "O(log n)", "O(n²)"],
           correctAnswer: 0,
           explanation:
@@ -43,7 +43,7 @@ const topicData = {
         {
           id: "3",
           question: "Can arrays in most programming languages change size after creation?",
-          type: "yes-no" as const,
+          type: "yes-no",
           correctAnswer: "no",
           explanation:
             "In most programming languages, traditional arrays have a fixed size that cannot be changed after creation. Dynamic arrays (like vectors or lists) can resize.",
@@ -59,7 +59,7 @@ const topicData = {
         {
           id: "1",
           question: "Do linked lists store elements in contiguous memory?",
-          type: "yes-no" as const,
+          type: "yes-no",
           correctAnswer: "no",
           explanation:
             "No, linked lists store elements in nodes that can be scattered throughout memory, connected by pointers.",
@@ -77,7 +77,7 @@ const topicData = {
         {
           id: "1",
           question: "Does the OSI model have 7 layers?",
-          type: "yes-no" as const,
+          type: "yes-no",
           correctAnswer: "yes",
           explanation:
             "Yes, the OSI model consists of 7 layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application.",
@@ -91,16 +91,15 @@ function GameArenaContent() {
   const params = useParams()
   const router = useRouter()
   const { updateUserProgress } = useAuth()
-  const [currentSection, setCurrentSection] = useState<"learn" | "practice" | "quiz">("learn")
+  const [currentSection, setCurrentSection] = useState("learn")
   const [sessionXP, setSessionXP] = useState(0)
   const [sessionCoins, setSessionCoins] = useState(0)
   const [isCompleted, setIsCompleted] = useState(false)
 
-  const subjectId = params.subject as string
-  const topicId = params.topic as string
+  const subjectId = params.subject
+  const topicId = params.topic
 
-  const topic =
-    topicData[subjectId as keyof typeof topicData]?.[topicId as keyof (typeof topicData)[keyof typeof topicData]]
+  const topic = topicData[subjectId]?.[topicId]
 
   if (!topic) {
     return (
@@ -119,13 +118,13 @@ function GameArenaContent() {
     )
   }
 
-  const handlePracticeComplete = (earnedXP: number, earnedCoins: number) => {
+  const handlePracticeComplete = (earnedXP, earnedCoins) => {
     setSessionXP((prev) => prev + earnedXP)
     setSessionCoins((prev) => prev + earnedCoins)
     setCurrentSection("quiz")
   }
 
-  const handleQuizComplete = (score: number, earnedXP: number, earnedCoins: number) => {
+  const handleQuizComplete = (score, earnedXP, earnedCoins) => {
     const totalXP = sessionXP + earnedXP
     const totalCoins = sessionCoins + earnedCoins
 

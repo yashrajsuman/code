@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { dataManager } from "@/lib/data-manager"
-import type { Achievement } from "@/lib/types"
 import { useAuth } from "./use-auth"
 
 export function useAchievements() {
   const { user, updateUserProgress } = useAuth()
-  const [newAchievements, setNewAchievements] = useState<Achievement[]>([])
+  const [newAchievements, setNewAchievements] = useState([])
   const [showAchievementModal, setShowAchievementModal] = useState(false)
 
   const checkForNewAchievements = () => {
