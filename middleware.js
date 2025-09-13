@@ -1,11 +1,10 @@
 import { NextResponse } from "next/server"
-import type { NextRequest } from "next/server"
 
 // Define protected and public-only routes
 const protectedRoutes = ["/dashboard", "/subjects", "/game", "/progress", "/badges"]
 const publicOnlyRoutes = ["/login", "/signup"]
 
-export function middleware(request: NextRequest) {
+export function middleware(request) {
   const { pathname } = request.nextUrl
 
   // Check if the current path is a protected route
